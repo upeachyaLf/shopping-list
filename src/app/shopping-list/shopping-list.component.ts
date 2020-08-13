@@ -22,4 +22,7 @@ export class ShoppingListComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+  addToShoppingList(newIngredent: Ingredent) {
+    this.ingredents.push(newIngredent);
+  }
 }
