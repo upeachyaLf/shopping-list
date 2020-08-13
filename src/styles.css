@@ -3,3 +3,7 @@
   margin-right: 0px !important;
   margin-left: -15px !important;
 }
+
+.open .dropdown-menu {
+  display: block !important;
+}
