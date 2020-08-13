@@ -17,6 +17,7 @@ export class ShoppingListComponent implements OnInit {
     this.ingredents = this.shoppingListService.getIngredents();
     this.shoppingListService.ingredentsChanged.subscribe(
       (ingredents: Array<Ingredent>) => {
+        console.log('called', ingredents);
         this.ingredents = ingredents;
       }
     );
