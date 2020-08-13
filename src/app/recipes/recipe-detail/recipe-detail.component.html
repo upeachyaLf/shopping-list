@@ -14,8 +14,10 @@
       </ul>
     </div>
   </div>
-</div>
-
-<div class="row">
-  <div class="col-xs-12">Ingerdents</div>
+  <ul class="list-group">
+    <li class="list-group-item active">Ingredents</li>
+    <li class="list-group-item" *ngFor="let item of selectedRecipe.ingredents">
+      {{ item.name }} ({{ item.amount }})
+    </li>
+  </ul>
 </div>
