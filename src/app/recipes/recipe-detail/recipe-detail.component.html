@@ -1,6 +1,8 @@
-<div class="row">
-  <div class="col-xs-12">
-    <h1>Recipe name</h1>
+<div class="card">
+  <img [src]="selectedRecipe.imagePath" class="card-img-top" alt="..." />
+  <div class="card-body">
+    <h5 class="card-title">{{ selectedRecipe.name }}</h5>
+    <p class="card-text">{{ selectedRecipe.description }}</p>
     <div class="btn-group">
       <button type="button" class="btn btn-primary dropdown-toggle">
         Manage Recipe <span class="caret"></span>
@@ -12,10 +14,6 @@
       </ul>
     </div>
   </div>
-</div>
-
-<div class="row">
-  <div class="col-xs-12">Description</div>
 </div>
 
 <div class="row">
