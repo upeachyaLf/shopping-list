@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  selectedLink: string;
+  selectedLink: string = 'recipe';
 
   onLinkSelected(selectEvent: { selectedLink: string }) {
     this.selectedLink = selectEvent.selectedLink;

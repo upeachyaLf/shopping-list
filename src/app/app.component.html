@@ -1,4 +1,7 @@
-<app-header (linkSelected)="onLinkSelected($event)"></app-header>
+<app-header
+  (linkSelected)="onLinkSelected($event)"
+  [activeLink]="selectedLink"
+></app-header>
 <div class="container mt-3 mb-3">
   <div class="row">
     <div class="col-md-12">
