@@ -9,7 +9,9 @@
       </button>
       <ul class="dropdown-menu">
         <li><span (click)="sendToShoppingList()">To shopping list</span></li>
-        <li><a>Edit recipe</a></li>
+        <li (click)="navigateToRecipeEdit()">
+          <a>Edit recipe</a>
+        </li>
         <li><a>Delete recipe</a></li>
       </ul>
     </div>
