@@ -1,3 +1,4 @@
+import { Subject } from 'rxjs';
 import { Injectable, EventEmitter } from '@angular/core';
 
 import { Ingredent } from '../common/models/ingredent.model';
@@ -6,7 +7,7 @@ import { Ingredent } from '../common/models/ingredent.model';
   providedIn: 'root',
 })
 export class ShoppingListService {
-  ingredentsChanged = new EventEmitter<Array<Ingredent>>();
+  ingredentsChanged = new Subject<Array<Ingredent>>();
 
   constructor() {}
 
@@ -27,11 +28,11 @@ export class ShoppingListService {
 
   addIngredent(ingredent: Ingredent) {
     this.ingredents.push(ingredent);
-    this.ingredentsChanged.emit(this.ingredents.slice());
+    this.ingredentsChanged.next(this.ingredents.slice());
   }
 
   addIngredentsArray(ingredents: Array<Ingredent>) {
     this.ingredents.push(...ingredents);
-    this.ingredentsChanged.emit(this.ingredents.slice());
+    this.ingredentsChanged.next(this.ingredents.slice());
   }
 }
