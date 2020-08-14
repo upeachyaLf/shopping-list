@@ -1,4 +1,4 @@
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
 
 import { Recipe } from '../common/models/recipe.model';
 
@@ -6,12 +6,13 @@ import { Recipe } from '../common/models/recipe.model';
   providedIn: 'root',
 })
 export class RecipeService {
-  recipeSelected = new EventEmitter<Recipe>();
+  // recipeSelected = new EventEmitter<Recipe>();
 
   constructor() {}
 
   private recipes: Array<Recipe> = [
     {
+      id: 1,
       name: 'Pizza',
       description: 'Cheezy meaty pizza!!',
       ingredents: [{ name: 'cheese', amount: 2 }],
@@ -19,6 +20,7 @@ export class RecipeService {
         'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.HygzsIuSbo6pgHy39s4rLwHaDt%26pid%3DApi&f=1',
     },
     {
+      id: 2,
       name: 'Burger',
       description: 'Double patty with cheese and bacon',
       ingredents: [
@@ -33,5 +35,9 @@ export class RecipeService {
   getRecipes() {
     // NOTE: for preventing mutation
     return this.recipes.slice();
+  }
+
+  findFromId(id: number) {
+    return this.recipes.find((recipe) => recipe.id == id);
   }
 }
