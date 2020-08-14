@@ -4,10 +4,4 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
-  selectedLink: string = 'recipe';
-
-  onLinkSelected(selectEvent: { selectedLink: string }) {
-    this.selectedLink = selectEvent.selectedLink;
-  }
-}
+export class AppComponent {}

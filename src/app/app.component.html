@@ -1,14 +1,12 @@
-<app-header
-  (linkSelected)="onLinkSelected($event)"
-  [activeLink]="selectedLink"
-></app-header>
+<app-header></app-header>
 <div class="container mt-3 mb-3">
   <div class="row">
     <div class="col-md-12">
-      <app-recipes *ngIf="selectedLink === 'recipe'"></app-recipes>
+      <!-- <app-recipes *ngIf="selectedLink === 'recipe'"></app-recipes>
       <app-shopping-list
         *ngIf="selectedLink === 'shopping-list'"
-      ></app-shopping-list>
+      ></app-shopping-list> -->
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>
