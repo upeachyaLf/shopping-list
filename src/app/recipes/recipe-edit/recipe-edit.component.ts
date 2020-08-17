@@ -45,8 +45,11 @@ export class RecipeEditComponent implements OnInit {
         initialFormData.ingredents.map((ingredent) => {
           recipeIngredents.push(
             new FormGroup({
-              name: new FormControl(ingredent.name),
-              amount: new FormControl(ingredent.amount),
+              name: new FormControl(ingredent.name, Validators.required),
+              amount: new FormControl(ingredent.amount, [
+                Validators.required,
+                Validators.pattern(/^[1-9]+[0-9]*$/),
+              ]),
             })
           );
         });
@@ -67,8 +70,11 @@ export class RecipeEditComponent implements OnInit {
 
   addIngredent() {
     const control = new FormGroup({
-      name: new FormControl(),
-      amount: new FormControl(),
+      name: new FormControl(null, Validators.required),
+      amount: new FormControl(null, [
+        Validators.required,
+        Validators.pattern(/^[1-9]+[0-9]*$/),
+      ]),
     });
     (<FormArray>this.recipeForm.get('ingredents')).push(control);
   }
