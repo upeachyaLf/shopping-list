@@ -1,43 +1,66 @@
-<form>
+<form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div class="col-5">
+      <div class="form-group">
+        <label>Recipe ID</label>
+        <input type="text" class="form-control mb-3" formControlName="id" />
+        <small class="alert alert-danger"
+          >We'll never share your email with anyone else.</small
+        >
+      </div>
+    </div>
+  </div>
   <div class="form-group">
     <label>Recipe name</label>
-    <input type="text" class="form-control mb-3" />
+    <input type="text" class="form-control mb-3" formControlName="name" />
     <small class="alert alert-danger"
       >We'll never share your email with anyone else.</small
     >
   </div>
   <div class="form-group">
     <label>Description</label>
-    <textarea rows="5" class="form-control mb-3"></textarea>
+    <textarea
+      rows="5"
+      class="form-control mb-3"
+      formControlName="description"
+    ></textarea>
     <small class="alert alert-danger"
       >We'll never share your email with anyone else.</small
     >
   </div>
   <div class="form-group">
     <label>Image path:</label>
-    <input type="text" class="form-control mb-3" />
+    <input type="text" class="form-control mb-3" formControlName="imagePath" />
     <small class="alert alert-danger"
       >We'll never share your email with anyone else.</small
     >
   </div>
-  <button type="button" class="btn btn-primary">Add Ingredents</button>
-  <div class="row">
-    <div class="col-6">
-      <div class="form-group">
-        <label>Ingredent</label>
-        <input type="text" class="form-control mb-3" />
-        <small class="alert alert-danger"
-          >We'll never share your email with anyone else.</small
-        >
+  <button type="button" class="btn btn-primary" (click)="addIngredent()">
+    Add Ingredents
+  </button>
+  <div formArrayName="ingredents">
+    <div class="row" *ngFor="let ingredent of getControls()">
+      <div class="col-6">
+        <div class="form-group">
+          <label>Ingredent</label>
+          <input type="text" class="form-control mb-3" formControlName="name" />
+          <small class="alert alert-danger"
+            >We'll never share your email with anyone else.</small
+          >
+        </div>
       </div>
-    </div>
-    <div class="col-6">
-      <div class="form-group">
-        <label>Amount</label>
-        <input type="number" class="form-control mb-3" />
-        <small class="alert alert-danger"
-          >We'll never share your email with anyone else.</small
-        >
+      <div class="col-6">
+        <div class="form-group">
+          <label>Amount</label>
+          <input
+            type="number"
+            class="form-control mb-3; let i=index"
+            formControlName="amount"
+          />
+          <small class="alert alert-danger"
+            >We'll never share your email with anyone else.</small
+          >
+        </div>
       </div>
     </div>
   </div>
