@@ -1,17 +1,46 @@
 <div class="row">
   <div class="col-xs-12">
-    <form>
+    <form (ngSubmit)="onSubmit()" #f="ngForm">
       <div class="row">
         <div class="col-sm-5 form-group">
           <label for="name">Name</label>
-          <input type="text" id="name" class="form-control" #nameInput />
+          <input
+            type="text"
+            id="name"
+            class="form-control mb-3"
+            name="name"
+            #name="ngModel"
+            ngModel
+            required
+          />
+          <span
+            *ngIf="name.touched && !name.valid"
+            class="alert alert-danger"
+            role="alert"
+            >Name is required</span
+          >
         </div>
-        <div class="col-sm-4 form-group">
+        <div class="col-sm-5 form-group">
           <label for="amount">Amount</label>
-          <input type="number" i="amount" class="form-control" #amountInput />
+          <input
+            type="number"
+            id="amount"
+            class="form-control mb-3"
+            name="amount"
+            #amount="ngModel"
+            ngModel
+            required
+            pattern="^[1-9]+[0-9]*$"
+          />
+          <span
+            *ngIf="amount.touched && !amount.valid"
+            class="alert alert-danger"
+            role="alert"
+            >Amount is required and should be greater than 0</span
+          >
         </div>
       </div>
-      <button class="btn btn-success mr-2" type="submit" (click)="onAddClick()">
+      <button class="btn btn-success mr-2" [disabled]="!f.valid" type="submit">
         Add
       </button>
       <button class="btn btn-danger mr-2" type="button">Delete</button>
