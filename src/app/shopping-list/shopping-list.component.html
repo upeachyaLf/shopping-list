@@ -8,7 +8,8 @@
       <li
         class="list-group-item"
         style="cursor: pointer;"
-        *ngFor="let item of ingredents"
+        *ngFor="let item of ingredents; let i = index"
+        (click)="onListClick(i)"
       >
         {{ item.name }} ({{ item.amount }})
       </li>

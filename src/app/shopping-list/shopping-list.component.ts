@@ -32,4 +32,8 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
   addToShoppingList(newIngredent: Ingredent) {
     this.shoppingListService.addIngredent(newIngredent);
   }
+
+  onListClick(index: number) {
+    this.shoppingListService.editListItemChanged.next(index);
+  }
 }

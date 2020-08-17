@@ -8,6 +8,7 @@ import { Ingredent } from '../common/models/ingredent.model';
 })
 export class ShoppingListService {
   ingredentsChanged = new Subject<Array<Ingredent>>();
+  editListItemChanged = new Subject<number>();
 
   constructor() {}
 
@@ -34,5 +35,9 @@ export class ShoppingListService {
   addIngredentsArray(ingredents: Array<Ingredent>) {
     this.ingredents.push(...ingredents);
     this.ingredentsChanged.next(this.ingredents.slice());
+  }
+
+  getListItem(index: number) {
+    return this.ingredents[index];
   }
 }
