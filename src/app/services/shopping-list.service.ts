@@ -40,4 +40,14 @@ export class ShoppingListService {
   getListItem(index: number) {
     return this.ingredents[index];
   }
+
+  editListItem(index: number, newIngredent: Ingredent) {
+    this.ingredents[index] = newIngredent;
+    this.ingredentsChanged.next(this.ingredents.slice());
+  }
+
+  deleteItem(index: number) {
+    this.ingredents.splice(index, 1);
+    this.ingredentsChanged.next(this.ingredents.slice());
+  }
 }

@@ -41,10 +41,19 @@
         </div>
       </div>
       <button class="btn btn-success mr-2" [disabled]="!f.valid" type="submit">
-        Add
+        {{ editMode ? "Update" : "Add" }}
       </button>
-      <button class="btn btn-danger mr-2" type="button">Delete</button>
-      <button class="btn btn-primary" type="button">Clear</button>
+      <button
+        class="btn btn-danger mr-2"
+        type="button"
+        *ngIf="editMode"
+        (click)="onDelete()"
+      >
+        Delete
+      </button>
+      <button class="btn btn-primary" type="button" (click)="onClear()">
+        Clear
+      </button>
     </form>
   </div>
 </div>
