@@ -30,15 +30,16 @@ export class RecipeEditComponent implements OnInit {
 
   onSubmit() {
     console.log('submitted', this.recipeForm);
+    // this.recipeForm.reset();
   }
 
-  // addIngredent() {
-  //   const control = {
-  //     name: new FormControl(null, Validators.required),
-  //     amount: new FormControl(null, Validators.required),
-  //   };
-  //   (<FormArray>this.recipeForm.get('ingredents')).push(...control);
-  // }
+  addIngredent() {
+    const control = new FormGroup({
+      name: new FormControl(),
+      amount: new FormControl(),
+    });
+    (<FormArray>this.recipeForm.get('ingredents')).push(control);
+  }
 
   getControls() {
     return (<FormArray>this.recipeForm.get('ingredents')).controls;

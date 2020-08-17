@@ -54,7 +54,11 @@
     Add Ingredents
   </button>
   <div formArrayName="ingredents">
-    <div class="row" *ngFor="let ingredent of getControls()">
+    <div
+      class="row"
+      *ngFor="let ingredent of getControls(); let i = index"
+      [formGroupName]="i"
+    >
       <div class="col-6">
         <div class="form-group">
           <label>Ingredent</label>
@@ -74,14 +78,14 @@
           <label>Amount</label>
           <input
             type="number"
-            class="form-control mb-3; let i=index"
+            class="form-control mb-3"
             formControlName="amount"
           />
           <small
             class="alert alert-danger"
             *ngIf="
-              !recipeForm.get('ingreents.amount').valid &&
-              recipeForm.get('ingreents.amount').touched
+              !recipeForm.get('ingredents.amount').valid &&
+              recipeForm.get('ingredents.amount').touched
             "
             >Amount is required.</small
           >
@@ -89,5 +93,11 @@
       </div>
     </div>
   </div>
-  <button type="submit" class="btn btn-primary mt-3">Submit</button>
+  <button
+    type="submit"
+    class="btn btn-primary mt-3"
+    [disabled]="!recipeForm.valid"
+  >
+    Submit
+  </button>
 </form>
