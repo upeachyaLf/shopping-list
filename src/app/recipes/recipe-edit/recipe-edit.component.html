@@ -4,8 +4,10 @@
       <div class="form-group">
         <label>Recipe ID</label>
         <input type="text" class="form-control mb-3" formControlName="id" />
-        <small class="alert alert-danger"
-          >We'll never share your email with anyone else.</small
+        <small
+          class="alert alert-danger"
+          *ngIf="recipeForm.get('id').touched && !recipeForm.get('id').valid"
+          >ID is required.</small
         >
       </div>
     </div>
@@ -13,8 +15,11 @@
   <div class="form-group">
     <label>Recipe name</label>
     <input type="text" class="form-control mb-3" formControlName="name" />
-    <small class="alert alert-danger"
-      >We'll never share your email with anyone else.</small
+
+    <small
+      class="alert alert-danger"
+      *ngIf="!recipeForm.get('name').valid && recipeForm.get('name').touched"
+      >Recipe name is required.</small
     >
   </div>
   <div class="form-group">
@@ -24,15 +29,25 @@
       class="form-control mb-3"
       formControlName="description"
     ></textarea>
-    <small class="alert alert-danger"
-      >We'll never share your email with anyone else.</small
+    <small
+      *ngIf="
+        !recipeForm.get('description').valid &&
+        recipeForm.get('description').touched
+      "
+      class="alert alert-danger"
+      >Description is required.</small
     >
   </div>
   <div class="form-group">
     <label>Image path:</label>
     <input type="text" class="form-control mb-3" formControlName="imagePath" />
-    <small class="alert alert-danger"
-      >We'll never share your email with anyone else.</small
+    <small
+      *ngIf="
+        !recipeForm.get('imagePath').valid &&
+        recipeForm.get('imagePath').touched
+      "
+      class="alert alert-danger"
+      >Image path is required.</small
     >
   </div>
   <button type="button" class="btn btn-primary" (click)="addIngredent()">
@@ -44,8 +59,13 @@
         <div class="form-group">
           <label>Ingredent</label>
           <input type="text" class="form-control mb-3" formControlName="name" />
-          <small class="alert alert-danger"
-            >We'll never share your email with anyone else.</small
+          <small
+            class="alert alert-danger"
+            *ngIf="
+              !recipeForm.get('ingredents.name').valid &&
+              recipeForm.get('ingredents.name').touched
+            "
+            >Ingredent name is required.</small
           >
         </div>
       </div>
@@ -57,12 +77,17 @@
             class="form-control mb-3; let i=index"
             formControlName="amount"
           />
-          <small class="alert alert-danger"
-            >We'll never share your email with anyone else.</small
+          <small
+            class="alert alert-danger"
+            *ngIf="
+              !recipeForm.get('ingreents.amount').valid &&
+              recipeForm.get('ingreents.amount').touched
+            "
+            >Amount is required.</small
           >
         </div>
       </div>
     </div>
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary mt-3">Submit</button>
 </form>
