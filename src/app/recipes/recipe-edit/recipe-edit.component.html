@@ -3,7 +3,7 @@
     <div class="col-5">
       <div class="form-group">
         <label>Recipe ID</label>
-        <input type="text" class="form-control mb-3" formControlName="id" />
+        <input type="number" class="form-control mb-3" formControlName="id" />
         <small
           class="alert alert-danger"
           *ngIf="recipeForm.get('id').touched && !recipeForm.get('id').valid"
@@ -63,14 +63,6 @@
         <div class="form-group">
           <label>Ingredent</label>
           <input type="text" class="form-control mb-3" formControlName="name" />
-          <small
-            class="alert alert-danger"
-            *ngIf="
-              !recipeForm.get('ingredents.name').valid &&
-              recipeForm.get('ingredents.name').touched
-            "
-            >Ingredent name is required.</small
-          >
         </div>
       </div>
       <div class="col-6">
@@ -81,14 +73,6 @@
             class="form-control mb-3"
             formControlName="amount"
           />
-          <small
-            class="alert alert-danger"
-            *ngIf="
-              !recipeForm.get('ingredents.amount').valid &&
-              recipeForm.get('ingredents.amount').touched
-            "
-            >Amount is required.</small
-          >
         </div>
       </div>
     </div>
