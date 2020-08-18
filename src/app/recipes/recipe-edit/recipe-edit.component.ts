@@ -36,6 +36,16 @@ export class RecipeEditComponent implements OnInit {
     this.router.navigate(['/recipes', this.recipeForm.value.id]);
   }
 
+  handleClear() {
+    this.recipeForm.reset();
+  }
+
+  handleDelete() {
+    this.recipeService.deleteRecipe(this.currentId);
+    this.editMode = false;
+    this.router.navigate(['/recipes']);
+  }
+
   initializeForm() {
     let recipeName = null;
     let recipeDescription = null;
@@ -81,6 +91,10 @@ export class RecipeEditComponent implements OnInit {
       ]),
     });
     (<FormArray>this.recipeForm.get('ingredents')).push(control);
+  }
+
+  removeIngredent(index) {
+    (<FormArray>this.recipeForm.get('ingredents')).removeAt(index);
   }
 
   getControls() {

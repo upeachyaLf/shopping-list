@@ -1,5 +1,20 @@
 <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
-  <div class="row">
+  <button type="submit" class="btn btn-success" [disabled]="!recipeForm.valid">
+    {{ editMode ? "Update" : "Submit" }}
+  </button>
+  <button type="button" class="btn btn-warning ml-3" (click)="handleClear()">
+    Clear
+  </button>
+  <button
+    type="button"
+    class="btn btn-danger ml-3"
+    *ngIf="editMode"
+    (click)="handleDelete()"
+  >
+    Delete
+  </button>
+
+  <div class="row mt-3">
     <div class="col-5">
       <div class="form-group">
         <label>Recipe ID</label>
@@ -76,17 +91,15 @@
         </div>
       </div>
       <div class="col-1">
-        <button type="button" class="btn btn-danger" style="margin-top: 30px;">
+        <button
+          type="button"
+          class="btn btn-danger"
+          style="margin-top: 30px;"
+          (click)="removeIngredent(i)"
+        >
           X
         </button>
       </div>
     </div>
   </div>
-  <button
-    type="submit"
-    class="btn btn-primary mt-3"
-    [disabled]="!recipeForm.valid"
-  >
-    {{ editMode ? "Update" : "Submit" }}
-  </button>
 </form>
