@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 
 import { RecipeService } from '../../services/recipe.service';
-import { Ingredent } from 'src/app/common/models/ingredent.model';
 
 @Component({
   selector: 'app-recipe-edit',
@@ -13,23 +12,28 @@ import { Ingredent } from 'src/app/common/models/ingredent.model';
 export class RecipeEditComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
-    private recipeService: RecipeService
+    private recipeService: RecipeService,
+    private router: Router
   ) {}
-  isEditMode: boolean = false;
+  editMode: boolean = false;
   currentId: number;
   recipeForm: FormGroup;
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.currentId = params['id'];
-      this.isEditMode = this.currentId ? true : false;
+      this.editMode = this.currentId ? true : false;
     });
 
     this.initializeForm();
   }
 
   onSubmit() {
-    console.log('submitted', this.recipeForm);
+    this.editMode
+      ? this.recipeService.updateRecipe(this.currentId, this.recipeForm.value)
+      : this.recipeService.saveRecipe(this.recipeForm.value);
+    this.editMode = false;
+    this.router.navigate(['/recipes', this.recipeForm.value.id]);
   }
 
   initializeForm() {
@@ -39,7 +43,7 @@ export class RecipeEditComponent implements OnInit {
     let recipeImagePath = null;
     let recipeIngredents = new FormArray([]);
 
-    if (this.isEditMode) {
+    if (this.editMode) {
       const initialFormData = this.recipeService.findFromId(this.currentId);
       if (initialFormData.ingredents) {
         initialFormData.ingredents.map((ingredent) => {

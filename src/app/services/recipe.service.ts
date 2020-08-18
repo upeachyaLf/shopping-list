@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 
 import { Recipe } from '../common/models/recipe.model';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RecipeService {
-  // recipeSelected = new EventEmitter<Recipe>();
+  recipeChanged = new Subject<Array<Recipe>>();
 
   constructor() {}
 
@@ -39,5 +40,16 @@ export class RecipeService {
 
   findFromId(id: number) {
     return this.recipes.find((recipe) => recipe.id == id);
+  }
+
+  saveRecipe(recipe: Recipe) {
+    this.recipes.push(recipe);
+    this.recipeChanged.next(this.recipes.slice());
+  }
+
+  updateRecipe(id: number, recipe: Recipe) {
+    const index = this.recipes.findIndex((item) => item.id == id);
+    this.recipes[index] = recipe;
+    this.recipeChanged.next(this.recipes.slice());
   }
 }

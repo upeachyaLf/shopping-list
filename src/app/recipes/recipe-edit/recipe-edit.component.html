@@ -87,6 +87,6 @@
     class="btn btn-primary mt-3"
     [disabled]="!recipeForm.valid"
   >
-    Submit
+    {{ editMode ? "Update" : "Submit" }}
   </button>
 </form>
