@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { RecipesComponent } from './recipes.component';
+import { DropdownDirective } from '../directives/dropdown.directive';
 import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
 import { RecipeItemComponent } from './recipe-item/recipe-item.component';
 import { RecipeListComponent } from './recipe-list/recipe-list.component';
@@ -18,6 +19,7 @@ import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
     RecipeItemComponent,
     RecipeEditComponent,
     SelectRecipeComponent,
+    DropdownDirective,
   ],
   imports: [CommonModule, RouterModule, ReactiveFormsModule],
   exports: [],
