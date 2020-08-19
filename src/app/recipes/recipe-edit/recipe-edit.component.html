@@ -103,3 +103,9 @@
     </div>
   </div>
 </form>
+
+<app-alert
+  [message]="'hello'"
+  (onCloseAlert)="closeAlert()"
+  *ngIf="displayAlert"
+></app-alert>

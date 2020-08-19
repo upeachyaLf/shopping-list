@@ -18,6 +18,7 @@ export class RecipeEditComponent implements OnInit {
   editMode: boolean = false;
   currentId: number;
   recipeForm: FormGroup;
+  displayAlert: boolean = true;
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -26,6 +27,10 @@ export class RecipeEditComponent implements OnInit {
     });
 
     this.initializeForm();
+  }
+
+  closeAlert() {
+    this.displayAlert = false;
   }
 
   onSubmit() {
