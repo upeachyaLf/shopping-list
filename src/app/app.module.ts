@@ -1,37 +1,34 @@
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
+import { RecipeModule } from './recipes/recipe.module';
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './header/header.component';
-import { RecipesComponent } from './recipes/recipes.component';
-import { RecipeListComponent } from './recipes/recipe-list/recipe-list.component';
-import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
-import { RecipeItemComponent } from './recipes/recipe-item/recipe-item.component';
-import { ShoppingListComponent } from './shopping-list/shopping-list.component';
-import { ShoppingListEditComponent } from './shopping-list/shopping-list-edit/shopping-list-edit.component';
-import { DropdownDirective } from './directives/dropdown.directive';
-import { SelectRecipeComponent } from './recipes/select-recipe/select-recipe.component';
-import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { AlertComponent } from './common/alert/alert.component';
+import { DropdownDirective } from './directives/dropdown.directive';
+import { RecipesRoutingModule } from './recipes/recipes-routing.module';
+import { ShoppingListModule } from './shopping-list/shopping-list.module';
+import { ShoppingListRoutingModule } from './shopping-list/shopping-list-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    RecipesComponent,
-    RecipeListComponent,
-    RecipeDetailComponent,
-    RecipeItemComponent,
-    ShoppingListComponent,
-    ShoppingListEditComponent,
     DropdownDirective,
-    SelectRecipeComponent,
-    RecipeEditComponent,
     AlertComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    BrowserModule,
+    RecipeModule,
+    FormsModule,
+    ShoppingListModule,
+    ReactiveFormsModule,
+    RecipesRoutingModule,
+    ShoppingListRoutingModule,
+    AppRoutingModule, // App routing module should only be imported after feature routing modules
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
