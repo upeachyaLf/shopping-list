@@ -7,13 +7,13 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class AlertComponent implements OnInit {
   @Input() message: string;
-  @Output() onCloseAlert = new EventEmitter<boolean>();
+  @Output() onCloseAlert = new EventEmitter<void>();
 
   constructor() {}
 
   ngOnInit(): void {}
 
   closeAlert() {
-    this.onCloseAlert.emit(true);
+    this.onCloseAlert.emit();
   }
 }

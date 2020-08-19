@@ -105,7 +105,7 @@
 </form>
 
 <app-alert
-  [message]="'hello'"
+  [message]="editMode ? 'Recipe Edited!' : 'Recipe Created'"
   (onCloseAlert)="closeAlert()"
   *ngIf="displayAlert"
 ></app-alert>
