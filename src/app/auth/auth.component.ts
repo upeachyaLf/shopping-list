@@ -35,6 +35,7 @@ export class AuthComponent implements OnInit {
       (res) => {
         this.loading = false;
         this.router.navigate(['/']);
+        localStorage.setItem('userInfo', JSON.stringify(res));
       },
       (err) => {
         this.loading = false;

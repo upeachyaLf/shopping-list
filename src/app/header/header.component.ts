@@ -27,6 +27,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   onLogout() {
     this.authService.user.next(null);
+    localStorage.removeItem('userInfo');
     this.router.navigate(['/auth']);
   }
 }

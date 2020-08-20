@@ -60,6 +60,13 @@ export class AuthService {
       );
   }
 
+  autoSignin() {
+    let userInfo = localStorage.getItem('userInfo');
+    if (userInfo) {
+      this._handleAuthentication(JSON.parse(userInfo));
+    }
+  }
+
   private _handleAuthentication(resData) {
     let userObject = {
       user: resData.email,
