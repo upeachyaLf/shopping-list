@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card *ngIf="!loading; else loadingIndicator">
   <mat-card-header>
     <mat-card-title>{{
       isLoginMode ? "User Login" : "User Signup"
@@ -7,18 +7,6 @@
 
   <mat-card-content>
     <form [formGroup]="authForm" (ngSubmit)="handleSubmit()">
-      <mat-form-field appearance="standard">
-        <mat-label>Username</mat-label>
-        <input matInput formControlName="userName" />
-        <mat-hint
-          class="error"
-          *ngIf="
-            authForm.get('userName').touched && !authForm.get('userName').valid
-          "
-          >Username is required</mat-hint
-        >
-      </mat-form-field>
-      <br />
       <mat-form-field appearance="standard">
         <mat-label>Email</mat-label>
         <input matInput formControlName="email" />
@@ -29,7 +17,18 @@
         >
       </mat-form-field>
       <br />
-      <br />
+      <mat-form-field appearance="standard">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput formControlName="password" />
+        <mat-hint
+          class="error"
+          *ngIf="
+            authForm.get('password').touched && !authForm.get('password').valid
+          "
+          >Password is required</mat-hint
+        >
+      </mat-form-field>
+      <br /><br />
       <button
         mat-raised-button
         color="primary"
@@ -50,3 +49,14 @@
     </form>
   </mat-card-content>
 </mat-card>
+
+<ng-template #loadingIndicator>
+  loading...
+  <mat-spinner></mat-spinner>
+</ng-template>
+
+<app-alert
+  [message]="errorMessage"
+  (onCloseAlert)="closeAlert()"
+  *ngIf="displayAlert"
+></app-alert>
