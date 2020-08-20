@@ -1,23 +1,52 @@
 <mat-card>
   <mat-card-header>
-    <mat-card-title>User Login</mat-card-title>
+    <mat-card-title>{{
+      isLoginMode ? "User Login" : "User Signup"
+    }}</mat-card-title>
   </mat-card-header>
 
   <mat-card-content>
-    <form class="example-form">
+    <form [formGroup]="authForm" (ngSubmit)="handleSubmit()">
       <mat-form-field appearance="standard">
         <mat-label>Username</mat-label>
-        <input matInput />
+        <input matInput formControlName="userName" />
+        <mat-hint
+          class="error"
+          *ngIf="
+            authForm.get('userName').touched && !authForm.get('userName').valid
+          "
+          >Username is required</mat-hint
+        >
       </mat-form-field>
       <br />
       <mat-form-field appearance="standard">
         <mat-label>Email</mat-label>
-        <input matInput />
+        <input matInput formControlName="email" />
+        <mat-hint
+          class="error"
+          *ngIf="authForm.get('email').touched && !authForm.get('email').valid"
+          >Enter a valid email</mat-hint
+        >
       </mat-form-field>
       <br />
-
-      <button mat-raised-button color="primary">Login</button> |
-      <button mat-raised-button color="accent">Signup</button>
+      <br />
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="!authForm.valid"
+      >
+        {{ isLoginMode ? "Login" : "Signup" }}
+      </button>
+      |
+      <button
+        type="button"
+        (click)="toggleLoginMode()"
+        mat-raised-button
+        color="accent"
+      >
+        {{ isLoginMode ? "Switch to Signup" : "Switch to Login" }}
+      </button>
     </form>
   </mat-card-content>
 </mat-card>
