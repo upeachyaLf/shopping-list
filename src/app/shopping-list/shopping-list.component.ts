@@ -3,6 +3,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Ingredent } from '../common/models/ingredent.model';
 import { ShoppingListService } from '../services/shopping-list.service';
 import { Subscription } from 'rxjs';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-shopping-list',
@@ -14,9 +15,13 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
 
   changeSubscription: Subscription;
 
-  constructor(private shoppingListService: ShoppingListService) {}
+  constructor(
+    private shoppingListService: ShoppingListService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
+    this.authService.autoSignin();
     this.ingredents = this.shoppingListService.getIngredents();
     this.changeSubscription = this.shoppingListService.ingredentsChanged.subscribe(
       (ingredents: Array<Ingredent>) => {
