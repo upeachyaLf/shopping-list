@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth',
@@ -15,7 +16,7 @@ export class AuthComponent implements OnInit {
   displayAlert: boolean = false;
   errorMessage: string;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.authForm = new FormGroup({
@@ -33,6 +34,7 @@ export class AuthComponent implements OnInit {
     this.authService.signIn(this.authForm.value).subscribe(
       (res) => {
         this.loading = false;
+        this.router.navigate(['/']);
       },
       (err) => {
         this.loading = false;
@@ -46,6 +48,7 @@ export class AuthComponent implements OnInit {
     this.authService.signUp(this.authForm.value).subscribe(
       (res) => {
         this.loading = false;
+        this.router.navigate(['/']);
       },
       (err) => {
         this.loading = false;
