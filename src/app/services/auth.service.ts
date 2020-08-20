@@ -9,11 +9,11 @@ import {
   SignUpResponse,
   SignInResponse,
 } from '../common/models/authResponse.model';
+import { environment } from '../../environments/environment';
 
-const SIGNUP_URL =
-  'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyA2ipzT6uMlH2UY4ULDSlmsntcEcE-tCss';
-const SIGNIN_URL =
-  'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyA2ipzT6uMlH2UY4ULDSlmsntcEcE-tCss';
+const SIGNUP_URL = environment.SIGNUP_URL + environment.API_KEY;
+
+const SIGNIN_URL = environment.SIGNIN_URL + environment.API_KEY;
 
 @Injectable({
   providedIn: 'root',
