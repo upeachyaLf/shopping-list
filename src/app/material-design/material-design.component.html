@@ -5,4 +5,8 @@
   <mat-grid-tile>4</mat-grid-tile>
 </mat-grid-list> -->
 
-<app-card></app-card>
+<app-card
+  [cardData]="cardData"
+  (onLike)="handleLike()"
+  (onShare)="handleShare()"
+></app-card>
