@@ -21,7 +21,6 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.authService.autoSignin();
     this.ingredents = this.shoppingListService.getIngredents();
     this.changeSubscription = this.shoppingListService.ingredentsChanged.subscribe(
       (ingredents: Array<Ingredent>) => {

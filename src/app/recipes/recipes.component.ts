@@ -10,9 +10,7 @@ import { AuthService } from '../services/auth.service';
 export class RecipesComponent implements OnInit {
   constructor(private authService: AuthService) {}
 
-  ngOnInit(): void {
-    this.authService.autoSignin();
-  }
+  ngOnInit(): void {}
 
   selectedRecipe: Recipe;
 }

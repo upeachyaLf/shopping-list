@@ -1,6 +1,6 @@
-import { throwError, Subject } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
+import { catchError, tap } from 'rxjs/operators';
+import { throwError, BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 import { User } from '../common/models/user.model';
@@ -20,7 +20,7 @@ const SIGNIN_URL = environment.SIGNIN_URL + environment.API_KEY;
 })
 export class AuthService {
   constructor(private http: HttpClient) {}
-  user = new Subject<User>();
+  user = new BehaviorSubject<User>(null);
 
   signUp(userInfo: UserCredentials) {
     return this.http
