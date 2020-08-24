@@ -3,4 +3,6 @@ export interface Card {
   subTitle: string;
   imagePath: string;
   description: string;
+  liked: boolean;
+  shared: boolean;
 }

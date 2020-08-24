@@ -18,10 +18,10 @@
   </mat-card-content>
   <mat-card-actions>
     <button mat-raised-button color="primary" (click)="handleLike()">
-      LIKE
+      {{ cardData.liked ? "UNLIKE" : "LIKE" }}
     </button>
     <button mat-raised-button color="accent" (click)="handleShare()">
-      SHARE
+      {{ cardData.shared ? "SHARE AGAIN" : "SHARE" }}
     </button>
   </mat-card-actions>
 </mat-card>

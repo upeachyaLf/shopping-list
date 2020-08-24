@@ -8,11 +8,18 @@
   ></mat-grid-tile>
   <mat-grid-tile>
     <ul>
-      <li *ngFor="let item of checkBoxes; let i = index">
+      <li>
         <app-checkbox
-          [label]="item.label"
-          (onChange)="handleChange($event, i)"
-          [checked]="item.checked"
+          [label]="'Liked'"
+          (onChange)="handleLike()"
+          [checked]="cardData.liked"
+        ></app-checkbox>
+      </li>
+      <li>
+        <app-checkbox
+          [label]="'Shared'"
+          (onChange)="handleShare()"
+          [checked]="cardData.shared"
         ></app-checkbox>
       </li>
     </ul>

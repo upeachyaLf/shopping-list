@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Card } from '../common/models/card.model';
+import { MaterialDesignService } from '../services/material-design.service';
 
 @Component({
   selector: 'app-material-design',
@@ -8,32 +9,21 @@ import { Card } from '../common/models/card.model';
   styleUrls: ['./material-design.component.css'],
 })
 export class MaterialDesignComponent implements OnInit {
-  constructor() {}
-  ngOnInit(): void {}
+  cardData: Card;
 
-  cardData: Card = {
-    title: 'Shiba Inu',
-    subTitle: 'Dog Breed',
-    description:
-      'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally bred for hunting.',
-    imagePath: 'https://material.angular.io/assets/img/examples/shiba1.jpg',
-  };
+  constructor(private mdService: MaterialDesignService) {}
 
-  checkBoxes = [
-    { label: 'box one', checked: false },
-    { label: 'box two', checked: true },
-  ];
+  ngOnInit(): void {
+    this.mdService.cardData.subscribe((data) => {
+      this.cardData = data;
+    });
+  }
 
   handleLike() {
-    console.log('liked');
+    this.cardData.liked = !this.cardData.liked;
   }
 
   handleShare() {
-    console.log('shared');
-  }
-
-  handleChange(event: { checked: boolean }, index: number) {
-    this.checkBoxes[index].checked = event.checked;
-    console.log('box', this.checkBoxes[index]);
+    this.cardData.shared = !this.cardData.shared;
   }
 }
