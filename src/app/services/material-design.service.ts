@@ -19,5 +19,18 @@ export class MaterialDesignService {
     shared: false,
   };
 
-  cardData = new BehaviorSubject<Card>(this.cardDataInitial);
+  // NOTE: object.assign is for avoiding mutations
+  cardData = new BehaviorSubject<Card>(Object.assign({}, this.cardDataInitial));
+
+  handleLike(isLiked: boolean) {
+    let newCardData: Card = this.cardData.getValue();
+    newCardData.liked = isLiked;
+    this.cardData.next(newCardData);
+  }
+
+  handleShare(isShared: boolean) {
+    let newCardData: Card = this.cardData.getValue();
+    newCardData.shared = isShared;
+    this.cardData.next(newCardData);
+  }
 }

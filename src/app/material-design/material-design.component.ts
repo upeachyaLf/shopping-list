@@ -20,10 +20,10 @@ export class MaterialDesignComponent implements OnInit {
   }
 
   handleLike() {
-    this.cardData.liked = !this.cardData.liked;
+    this.mdService.handleLike(!this.cardData.liked);
   }
 
   handleShare() {
-    this.cardData.shared = !this.cardData.shared;
+    this.mdService.handleShare(!this.cardData.shared);
   }
 }
