@@ -3,14 +3,27 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { CardComponent } from './card/card.component';
 import { AlertComponent } from './alert/alert.component';
 import { DropdownDirective } from '../directives/dropdown.directive';
+import { CheckboxComponent } from './form/checkbox/checkbox.component';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, MatCardModule, MatButtonModule],
-  declarations: [AlertComponent, DropdownDirective, CardComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    MatCardModule,
+    MatButtonModule,
+    MatCheckboxModule,
+  ],
+  declarations: [
+    AlertComponent,
+    DropdownDirective,
+    CardComponent,
+    CheckboxComponent,
+  ],
   exports: [
     AlertComponent,
     CommonModule,
@@ -19,6 +32,7 @@ import { DropdownDirective } from '../directives/dropdown.directive';
     CardComponent,
     MatCardModule,
     MatButtonModule,
+    CheckboxComponent,
   ],
 })
 export class SharedModule {}

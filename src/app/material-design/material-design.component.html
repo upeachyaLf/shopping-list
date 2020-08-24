@@ -1,12 +1,20 @@
-<!-- <mat-grid-list cols="4" rowHeight="2:3" gutterSize="10px">
-  <mat-grid-tile colspan="2">1</mat-grid-tile>
-  <mat-grid-tile>2</mat-grid-tile>
-  <mat-grid-tile>3</mat-grid-tile>
-  <mat-grid-tile>4</mat-grid-tile>
-</mat-grid-list> -->
-
-<app-card
-  [cardData]="cardData"
-  (onLike)="handleLike()"
-  (onShare)="handleShare()"
-></app-card>
+<mat-grid-list cols="2" rowHeight="2:3" gutterSize="10px">
+  <mat-grid-tile colspan="1"
+    ><app-card
+      [cardData]="cardData"
+      (onLike)="handleLike()"
+      (onShare)="handleShare()"
+    ></app-card
+  ></mat-grid-tile>
+  <mat-grid-tile>
+    <ul>
+      <li *ngFor="let item of checkBoxes; let i = index">
+        <app-checkbox
+          [label]="item.label"
+          (onChange)="handleChange($event, i)"
+          [checked]="item.checked"
+        ></app-checkbox>
+      </li>
+    </ul>
+  </mat-grid-tile>
+</mat-grid-list>
