@@ -19,4 +19,10 @@ describe('CardComponent', () => {
       expect(comp.getBackgroundImage()).toBe(expectedOutput);
     });
   });
+
+  describe('Function: handleLike', () => {
+    it('should raise onLike event', () => {
+      const comp = new CardComponent();
+    });
+  });
 });
