@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { CardComponent } from './card/card.component';
 import { AlertComponent } from './alert/alert.component';
@@ -17,6 +18,7 @@ import { CheckboxComponent } from './form/checkbox/checkbox.component';
     MatCardModule,
     MatButtonModule,
     MatCheckboxModule,
+    RouterTestingModule,
   ],
   declarations: [
     AlertComponent,
