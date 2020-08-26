@@ -1,11 +1,11 @@
+import { of } from 'rxjs';
 import { TestBed } from '@angular/core/testing';
 
 import { MaterialDesignComponent } from './material-design.component';
 import { MaterialDesignService } from '../services/material-design.service';
-import { BehaviorSubject } from 'rxjs';
 
 class MockMaterialService {
-  cardData = new BehaviorSubject<string>(Object.assign('', 'hello'));
+  cardData = of(1, 2, 3);
   handleLike = () => {};
 }
 
